@@ -33,4 +33,6 @@ Route::get('/register', function(){
     return view ('register');
 });
 Route::post('/register',[UsersController::class, 'create']);
+Route::get('/userinfo',[UsersController::class, 'userinfo']);
+
 

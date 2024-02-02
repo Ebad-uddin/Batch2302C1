@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class UsersController extends Controller
 {
     public function create(Request $request){
+        // validate the form before submission
         $request->validate([
             'name' => 'required',
             'email' => 'required | email',
@@ -20,7 +21,13 @@ class UsersController extends Controller
         $data->email = $request['email'];
         $data->password = $request['password'];
         $data->save();
-        return redirect('/register');
+        return redirect('/userinfo');
 
+    }
+    public function userinfo(){
+        $userinfo = User::all(); // fetching data from database using model
+        // dd($userinfo);   //prints the data in the form of array
+        $user_records = compact('userinfo');
+        return view('userinfo')->with($user_records);
     }
 }
