@@ -30,4 +30,30 @@ class UsersController extends Controller
         $user_records = compact('userinfo');
         return view('userinfo')->with($user_records);
     }
+    public function userdel($id){
+        // echo $id;
+        $data = User::find($id);
+        // dd($data);
+        if(!is_null($data)){
+            $data->delete();
+            return redirect('/userinfo');
+          }else{
+            return redirect('/userinfo');
+        }
+
+    }
+    public function useredit($id){
+        $editdata = User::find($id);
+        // dd($editdata);
+        return view ('edituser')->with(compact('editdata'));
+
+    }
+    public function upd($id, Request $request){
+        $userdata = User::find($id);
+        $userdata->name = $request['name'];
+        $userdata->email = $request['email'];
+        $userdata->password = $request['password'];
+        $userdata->save();
+        return redirect ('/userinfo');
+    }
 }

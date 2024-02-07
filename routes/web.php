@@ -34,5 +34,8 @@ Route::get('/register', function(){
 });
 Route::post('/register',[UsersController::class, 'create']);
 Route::get('/userinfo',[UsersController::class, 'userinfo']);
+Route::get('/userdel/{id}',[UsersController::class, 'userdel']);
+Route::get('/useredit/{id}',[UsersController::class, 'useredit']);
+Route::post('/upduser/{id}',[UsersController::class, 'upd']);
 
 

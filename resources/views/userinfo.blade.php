@@ -32,6 +32,7 @@
                             <th scope="col">Id</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,10 @@
                           <td scope="row">{{$v->id}}</td>
                           <td>{{$v->name}}</td>
                           <td>{{$v->email}}</td>
+                          <td>
+                            <a href="{{url('/')}}/useredit/{{$v->id}}" class="btn btn-primary">Edit</a>
+                            <a href="{{url('/')}}/userdel/{{$v->id}}" class="btn btn-danger">Delete</a>
+                          </td>
                         </tr>
                         @endforeach
                        
